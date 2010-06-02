@@ -1,0 +1,32 @@
+TwilioMime
+==========
+
+twilio_mime is a simple Rails plugin that adds a mime type for Twilio responses (http://www.twilio.com), you can respond to Twilio requests in the same way you'd handle other mime types
+
+For Example
+=======
+
+Lets say we have a blog and on our Posts controller we have a show action
+
+	def show
+    	  @posts = Post.find :all
+
+          respond_to do |format|
+            format.html
+            format.twilio
+            format.xml { render :xml => @posts.to_xml }
+          end
+
+	end
+
+In our views we could have a file that holds the Twilio response called show.twilio.erb that might contain something like this
+
+	<?xml  version="1.0" encoding="UTF-8" ?>  
+	<Response>
+	  <% @posts.each do |post| %>
+  	    <Say><%= post.title </Say>
+          <% end %>
+	</Response>
+
+
+Copyright (c) 2010 Dale John Cook, released under the MIT license
