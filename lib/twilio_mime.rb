@@ -1,6 +1,6 @@
 # TwilioMime
 
-Mime::Type.register_alias "text/html", :twilio
+Mime::Type.register_alias "text/html", :twiml
 
 class ActionController::Base
 
@@ -8,7 +8,7 @@ class ActionController::Base
     
     def set_twilio_format
       if is_twilio_request?
-        request.format = :twilio
+        request.format = :twiml
       end
     end
 
