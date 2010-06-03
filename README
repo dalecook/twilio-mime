@@ -1,7 +1,8 @@
 TwilioMime
 ==========
 
-twilio_mime is a simple Rails plugin that adds a mime type for Twilio responses (http://www.twilio.com). Using twilio_mime you can respond to Twilio requests using TwiML in the same way you'd handle other mime types
+twilio_mime is a simple Rails plugin that adds a mime type for Twilio responses (http://www.twilio.com). Using twilio_mime you can respond to 
+Twilio requests using TwiML in the same way you'd handle other mime types
 
 For Example
 =======
@@ -40,13 +41,16 @@ Install as a plugin using
 Set Up
 =======
 
-twilio_mime tries to determine if the request is actually coming from Twilio. The safest way to do this is to set your Twilio Account GUID as a constant in your application. To do this, 
-in config/environment.rb set a constant TWILIO_ACCOUNT_GUID and set it to your Twilio Account GUID. If you don't have a Twilio account you can sign up at https://www.twilio.com/try-twilio. 
+twilio_mime tries to determine if the request is actually coming from Twilio. The safest way to do this is to set your Twilio Account GUID 
+as a constant in your application. To do this, in config/environment.rb set a constant TWILIO_ACCOUNT_GUID and set it to your Twilio 
+Account GUID. If you don't have a Twilio account you can sign up at https://www.twilio.com/try-twilio. 
+
 For example
 TWILIO_ACCOUNT_GUID = "AC000000xx332541df93d8d685c2331111"
 
-Incoming requests from Twilio always provide this so you can be reasonably sure the request is coming from Twilio. If the constant is present then twilio_mime will check this before deciding 
-if the request is valid. If you don't wish to do that then twilio_mime will attempt to work out if the request is coming from Twilio by looking for certain parameters. To see how this is actually 
-done take a look at the is_twilio_request? function in vendor/plugins/twilio_mime/lib/twilio_mime.rb
+Incoming requests from Twilio always provide this so you can be reasonably sure the request is coming from Twilio. If the constant is present 
+then twilio_mime will check this before deciding if the request is valid. If you don't wish to do that then twilio_mime will attempt to work 
+out if the request is coming from Twilio by looking for certain parameters. To see how this is actually done take a look at the 
+is_twilio_request? function in vendor/plugins/twilio_mime/lib/twilio_mime.rb
 
 Copyright (c) 2010 Dale John Cook, released under the MIT license
