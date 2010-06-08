@@ -1,6 +1,6 @@
 # TwilioMime
 
-Mime::Type.register_alias "text/html", :twiml
+Mime::Type.register_alias "text/xml", :twiml
 
 class ActionController::Base
 
