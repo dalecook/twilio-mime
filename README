@@ -37,14 +37,17 @@ Install as a plugin using
 	./script/plugin install git://github.com/dalecook/twilio-mime.git
 
 
-Set Up
+Set Up and Security
 =======
 
 twilio_mime tries to determine if the request is actually coming from Twilio. The safest way to do this is to set your Twilio Account GUID as a constant in your application. To do this, in config/environment.rb set a constant TWILIO_ACCOUNT_GUID and set it to your Twilio Account GUID. If you don't have a Twilio account you can sign up at https://www.twilio.com/try-twilio. 
 
-For example
+For example in config/environment.rb
 TWILIO_ACCOUNT_GUID = "AC000000xx332541df93d8d685c2331111"
 
-Incoming requests from Twilio always provide this so you can be reasonably sure the request is coming from Twilio. If the constant is present then twilio_mime will check this before deciding if the request is valid. If you don't wish to do that then twilio_mime will attempt to work out if the request is coming from Twilio by looking for certain parameters. To see how this is actually done take a look at the is_twilio_request? function in vendor/plugins/twilio_mime/lib/twilio_mime.rb
+Incoming requests from Twilio always provide this so you can be reasonably sure the request is coming from Twilio. If the constant is present then twilio_mime will check this before deciding if the request is valid. 
+In addition, if this constant is set then it will override the explicit mime format URL request, such that a request like http://yourapp.com/foo/show/1.twiml would not return the Twilio response but would return the default HTML response instead, since the AccountGuid is missing from this request. 
+
+If you don't wish to do that then twilio_mime will attempt to work out if the request is coming from Twilio by looking for certain parameters. In this case an explit mime format request would return the TwiML response even if the parameters were non present. To see how this is actually done take a look at the is_twilio_request? function in vendor/plugins/twilio_mime/lib/twilio_mime.rb
 
 Copyright (c) 2010 Dale John Cook, released under the MIT license
